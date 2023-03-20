@@ -17,7 +17,12 @@ async function main() {
     `);
     await navigator.clipboard.writeText([HEADER, command, ... args].join('\n'));
     console.log("Success");
-    window.open(UNITY_EDITOR_LINK, '_blank');
+
+    var win = window.open(UNITY_EDITOR_LINK, '_blank');
+    if (!win || win.closed || typeof win.closed == 'undefined') {
+        // blocked
+        return;
+    };
     window.close();
 }
 
