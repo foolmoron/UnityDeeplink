@@ -6,7 +6,7 @@ async function main() {
     var command = params.get('command');
     var args = params.getAll('args');
     document.body.insertAdjacentHTML('beforeend', `
-        <h4>Command</h4>
+        <h4>command</h4>
         <div>
             ${params.get('command')}
         </div>
