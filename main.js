@@ -5,7 +5,7 @@ async function main() {
     var params = new URLSearchParams(location.search);
     var command = params.get('command');
     var args = params.getAll('args');
-    document.write(`
+    document.body.insertAdjacentHTML('beforeend', `
         <h4>Command</h4>
         <div>
             ${params.get('command')}
@@ -22,7 +22,7 @@ async function main() {
 }
 
 main().catch(err => {
-    document.write(`
+    document.body.insertAdjacentHTML('beforeend', `
         <h4 style="color: firebrick;">Error</h4>
         <div>
             ${err.toString()}
