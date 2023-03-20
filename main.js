@@ -21,7 +21,7 @@ async function main() {
     var win = window.open(UNITY_EDITOR_LINK, '_blank');
     if (!win || win.closed || typeof win.closed == 'undefined') {
         // blocked
-        return;
+        throw new Error("Popups are not allowed! Allow popups for this site and then refresh.")
     };
     window.close();
 }
