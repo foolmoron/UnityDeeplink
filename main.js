@@ -17,7 +17,7 @@ async function main() {
     `);
     await navigator.clipboard.writeText([HEADER, command, ... args].join('\n'));
     console.log("Success");
-    window.open(UNITY_EDITOR_LINK);
+    window.open(UNITY_EDITOR_LINK, '_blank');
     window.close();
 }
 
