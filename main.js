@@ -25,7 +25,8 @@ main().catch(err => {
     document.write(`
         <h4 style="color: firebrick;">Error</h4>
         <div>
-            ${JSON.stringify(err)}
+            ${err.toString()}
         </div>
     `);
+    throw err;
 })
