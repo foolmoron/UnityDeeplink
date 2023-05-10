@@ -5,7 +5,13 @@ async function main() {
     var params = new URLSearchParams(location.search);
     var command = params.get('command');
     var args = params.getAll('args');
-    
+
+    if (command && args[0]) {
+        document.title = document.title.replace('| ', `| ${command} - ${args[0]} |`)
+    } else if (command) {
+        document.title = document.title.replace('| ', `| ${command} |`)
+    }
+
     document.body.insertAdjacentHTML('beforeend', `
         <h4>command</h4>
         <div>
