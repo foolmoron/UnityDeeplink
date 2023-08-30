@@ -28,18 +28,18 @@ async function main() {
         throw new Error("Link is invalid!")
     }
 
+    // expose this func to the HTML
+    window.openLink = async function openLink() {
+        await navigator.clipboard.writeText([HEADER, command, ... args].join('\n'));
+    
+        var win = window.open(UNITY_EDITOR_LINK, '_blank');
+        if (!win || win.closed || typeof win.closed == 'undefined') {
+            // blocked
+            throw new Error("Popups are not allowed! Allow popups for this site and then refresh.")
+        };    
+        window.close();
+    }
     await openLink();
-}
-
-async function openLink() {
-    await navigator.clipboard.writeText([HEADER, command, ... args].join('\n'));
-
-    var win = window.open(UNITY_EDITOR_LINK, '_blank');
-    if (!win || win.closed || typeof win.closed == 'undefined') {
-        // blocked
-        throw new Error("Popups are not allowed! Allow popups for this site and then refresh.")
-    };    
-    window.close();
 }
 
 main().catch(err => {
