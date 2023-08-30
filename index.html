@@ -10,5 +10,9 @@
 <body>
     <h3>Redirecting... please allow clipboard permissions, and pop-up permissions!</h3>
     <div><a href="https://github.com/foolmoron/UnityDeeplink" target="_blank">Source Code (for nerds)</a></div>
+    <button
+        onclick="openLink().catch(err => alert(err.toString()))"
+        style="font-size: 2rem; font-weight: bold;"
+    >Open Link Manually</button>
 </body>
 </html>

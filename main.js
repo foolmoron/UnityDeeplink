@@ -28,6 +28,10 @@ async function main() {
         throw new Error("Link is invalid!")
     }
 
+    await openLink();
+}
+
+async function openLink() {
     await navigator.clipboard.writeText([HEADER, command, ... args].join('\n'));
 
     var win = window.open(UNITY_EDITOR_LINK, '_blank');
