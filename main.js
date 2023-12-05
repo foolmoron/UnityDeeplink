@@ -1,10 +1,12 @@
 const HEADER = `$$UNITY_DEEPLINK$$`
+const HEADER_RUNTIME = `$$UNITY_DEEPLINK_RUNTIME$$`
 const UNITY_EDITOR_LINK = `com.unity3d.kharma://unity_deeplink_hack`
 
 async function main() {
     var params = new URLSearchParams(location.search);
     var command = params.get('command');
     var args = params.getAll('args');
+    var runtime = params.get('r');
 
     if (command && args[0]) {
         document.title = document.title.replace('| ', `| ${command} - ${args[0]} |`)
@@ -30,13 +32,14 @@ async function main() {
 
     // expose this func to the HTML
     window.openLink = async function openLink() {
-        await navigator.clipboard.writeText([HEADER, command, ... args].join('\n'));
+        const h = runtime ? HEADER_RUNTIME : HEADER;
+        await navigator.clipboard.writeText([h, command, ... args].join('\n'));
     
         var win = window.open(UNITY_EDITOR_LINK, '_blank');
         if (!win || win.closed || typeof win.closed == 'undefined') {
             // blocked
             throw new Error("Popups are not allowed! Allow popups for this site and then refresh.")
-        };    
+        };
         window.close();
     }
     await openLink();
