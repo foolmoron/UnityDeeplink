@@ -1,5 +1,5 @@
 # Unity Deeplink
-Handle deeplinks to the currently opened Unity project, using any data that fits in a copied URL. I wrote it for internal use on our new game [GHOST BIKE](https://www.messhof.com/ghostbike), but you can adapt it to any Unity project.
+Handle deeplinks to the currently opened Unity project, using any data that fits in a copied URL. I wrote it for internal use on our new game [WHEEL WORLD](https://annapurnainteractive.com/en/games/wheel-world), but you can adapt it to any Unity project.
 
 ## How to use
 Create a URL that uses `command` and `args` query params. Ex:  
